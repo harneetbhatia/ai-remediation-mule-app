@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<flow name="ai-remediation-mule-appFlow" doc:id="daa25052-4bc2-4b17-98e0-dc24d9099fe5" >
+		<http:listener doc:name="Listener" doc:id="05857ddb-6b5a-4078-8a2e-f93c09225177" config-ref="HTTP_Listener_config" path="/order"/>
+		<logger level="INFO" doc:name="Logger" doc:id="2913b6c7-c17c-4cab-9b9e-8cb289b5ad20" message="Processing order request"/>
+		<ee:transform doc:name="Transform Order" doc:id="744bbca9-8427-4675-aa95-a8a3408c247c" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+{
+ total: payload.price + payload.name
+}]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<set-payload value="Order processed successfully" doc:name="Set Payload" doc:id="941a506c-5de9-4401-9cc3-9a39d45b4370" />
+		<error-handler ref="global-error-handlingError_Handler" />
+	</flow>
+</mule>

@@ -1,0 +1,5 @@
+mq:
+  url: "https://mq-us-east-1.anypoint.mulesoft.com/api/v1/organizations/ff4a6a0f-12c2-49c9-8310-f5f482611181/environments/6d59c952-8a0c-47bb-b611-891457ed0fe9"
+  clientId: "c05bd490ece2448bb10188bba8256ced"
+  clientSecret: "ba83A82E1b0d4c3197bcC7f5a5601f62"
+  queue: "integration-errors"
