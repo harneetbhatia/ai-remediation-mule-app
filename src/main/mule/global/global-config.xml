@@ -6,7 +6,7 @@
 http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
 http://www.mulesoft.org/schema/mule/anypoint-mq http://www.mulesoft.org/schema/mule/anypoint-mq/current/mule-anypoint-mq.xsd">
 	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="661a2c12-c152-49b7-b983-8c08246ab7ae" >
-		<http:listener-connection host="0.0.0.0" port="8082" />
+		<http:listener-connection host="0.0.0.0" port="8082" protocol="HTTPS" />
 	</http:listener-config>
 	<anypoint-mq:config name="Anypoint_MQ_Config" doc:name="Anypoint MQ Config" doc:id="a9f8b0d8-9c55-421e-8803-a5737636da4a" >
 		<anypoint-mq:connection url="${mq.url}" clientId="${mq.clientId}" clientSecret="${mq.clientSecret}" />
